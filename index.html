@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="angularExample">
+
+<head>
+    <meta charset="utf-8">
+    <title>Beda angular dengan react</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body ng-controller="tabsController">
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active" ng-repeat="tab in tabs" ng-if="tab.id == 1">
+                <a href="#{{tab.id}}" data-toggle="tab">{{tab.name}}</a>
+            </li>
+            <li ng-repeat="tab in tabs" ng-if="tab.id !== 1">
+                <a href="#{{tab.id}}" data-toggle="tab">{{tab.name}}</a>
+            </li>
+        </ul>
+        <br />
+        <div class="tab-content">
+            <div class="tab-pane active" ng-repeat="tab in tabs" ng-if="tab.id == 1" id="{{tab.id}}">
+                <button ng-repeat="menu in tab.menus" type="button" class="btn {{menu.button_class}}">{{menu.display}}</button>
+            </div>
+            <div class="tab-pane" ng-repeat="tab in tabs" ng-if="tab.id !== 1" id="{{tab.id}}">
+                <button ng-repeat="menu in tab.menus" type="button" class="btn {{menu.button_class}}">{{menu.display}}</button>
+            </div>
+        </div>
+        <br />
+        <a href="index-react.html" class="btn btn-primary btn-block">Compare with react</a>
+    </div>
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/index-angular.js"></script>
+</body>
+
+</html>
