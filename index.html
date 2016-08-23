@@ -20,10 +20,14 @@
         <br />
         <div class="tab-content">
             <div class="tab-pane active" ng-repeat="tab in tabs" ng-if="tab.id == 1" id="{{tab.id}}">
-                <button ng-repeat="menu in tab.menus" type="button" class="btn {{menu.button_class}}">{{menu.display}}</button>
+                <p ng-repeat="menu in tab.menus">
+                    <button type="button" class="btn {{menu.button_class}}">{{menu.display}}</button>
+                </p>
             </div>
             <div class="tab-pane" ng-repeat="tab in tabs" ng-if="tab.id !== 1" id="{{tab.id}}">
-                <button ng-repeat="menu in tab.menus" type="button" class="btn {{menu.button_class}}">{{menu.display}}</button>
+                <p ng-repeat="menu in tab.menus">
+                    <button type="button" class="btn {{menu.button_class}}">{{menu.display}}</button>
+                </p>
             </div>
         </div>
         <br />

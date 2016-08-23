@@ -75,7 +75,9 @@ var TabPane = React.createClass({
           tab.menus.map(function(menu, i) {
             console.log(menu, i)
             return(
-              <button key={i} type="button" className={"btn " + menu.button_class}>{menu.display}</button>
+              <p>
+                <button key={i} type="button" className={"btn " + menu.button_class}>{menu.display}</button>
+              </p>
             )
           })
         }
