@@ -10,21 +10,13 @@
 <body ng-controller="tabsController">
     <div class="container">
         <ul class="nav nav-tabs">
-            <li class="active" ng-repeat="tab in tabs" ng-if="tab.id == 1">
-                <a href="#{{tab.id}}" data-toggle="tab">{{tab.name}}</a>
-            </li>
-            <li ng-repeat="tab in tabs" ng-if="tab.id !== 1">
+            <li ng-class="{'active': tab.id == 1}" ng-repeat="tab in tabs">
                 <a href="#{{tab.id}}" data-toggle="tab">{{tab.name}}</a>
             </li>
         </ul>
         <br />
         <div class="tab-content">
-            <div class="tab-pane active" ng-repeat="tab in tabs" ng-if="tab.id == 1" id="{{tab.id}}">
-                <p ng-repeat="menu in tab.menus">
-                    <button type="button" class="btn {{menu.button_class}}">{{menu.display}}</button>
-                </p>
-            </div>
-            <div class="tab-pane" ng-repeat="tab in tabs" ng-if="tab.id !== 1" id="{{tab.id}}">
+            <div class="tab-pane :ng-class:{'active': tab.id == 1}" ng-repeat="tab in tabs" id="{{tab.id}}">
                 <p ng-repeat="menu in tab.menus">
                     <button type="button" class="btn {{menu.button_class}}">{{menu.display}}</button>
                 </p>
