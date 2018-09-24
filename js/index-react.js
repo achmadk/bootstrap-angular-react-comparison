@@ -45,58 +45,51 @@ var tabs = [{
   }]
 }]
 
-var Tabs = React.createClass({
-  render: function() {
-    return(
-      <ul className="nav nav-tabs">
+var Tabs = function() {
+  return(
+    <ul className="nav nav-tabs">
+    {
+      tabs.map(function(tab, i) {
+        var isActive = (tab.id == 1) ? "active" : ""
+        return(
+          <li className={"nav-item " + isActive} key={i}>
+              <a href={"#" + tab.id} className="nav-link" data-toggle="tab">{tab.name}</a>
+          </li>
+        )
+      })
+    }
+    </ul>
+  )
+}
+
+var TabPane = function({ tab }) {
+  var isActive = (tab.id == 1) ? "active" : ""
+  return(
+    <div className={"tab-pane " + isActive} id={tab.id}>
       {
-        tabs.map(function(tab, i) {
-          var isActive = (tab.id == 1) ? "active" : ""
+        tab.menus.map(function(menu, i) {
           return(
-            <li className={isActive} key={i}>
-                <a href={"#" + tab.id} data-toggle="tab">{tab.name}</a>
-            </li>
+            <p key={i}>
+              <button type="button" className={"btn " + menu.button_class}>{menu.display}</button>
+            </p>
           )
         })
       }
-      </ul>
-    )
-  }
-})
+    </div>
+  )
+}
 
-var TabPane = React.createClass({
-  render: function() {
-    var tab = this.props.tab
-    var isActive = (tab.id == 1) ? "active" : ""
-    return(
-      <div className={"tab-pane " + isActive} id={tab.id}>
-        {
-          tab.menus.map(function(menu, i) {
-            return(
-              <p key={i}>
-                <button type="button" className={"btn " + menu.button_class}>{menu.display}</button>
-              </p>
-            )
-          })
-        }
-      </div>
-    )
-  }
-})
-
-var TabContent = React.createClass({
-  render: function() {
-    return (
-      <div className="tab-content">
-      {
-        tabs.map(function(tab, i) {
-          return (<TabPane key={i} tab={tab} />)
-        })
-      }
-      </div>
-    )
-  }
-})
+var TabContent = function() {
+  return (
+    <div className="tab-content">
+    {
+      tabs.map(function(tab, i) {
+        return (<TabPane key={i} tab={tab} />)
+      })
+    }
+    </div>
+  )
+}
 
 ReactDOM.render(<Tabs />, document.getElementById('tabs'))
 ReactDOM.render(<TabContent />, document.getElementById('tab-content'))

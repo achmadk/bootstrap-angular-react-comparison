@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <title>Beda angular dengan react</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body ng-controller="tabsController">
     <div class="container">
         <ul class="nav nav-tabs">
-            <li ng-class="{'active': tab.id == 1}" ng-repeat="tab in tabs">
-                <a href="#{{tab.id}}" data-toggle="tab">{{tab.name}}</a>
+            <li ng-class="{'nav-item': true, 'active': tab.id == 1}" ng-repeat="tab in tabs">
+                <a href="#{{tab.id}}" class="nav-link" data-toggle="tab">{{tab.name}}</a>
             </li>
         </ul>
         <br />
@@ -25,9 +25,9 @@
         <br />
         <a href="index-react.html" class="btn btn-primary btn-block">Compare with react</a>
     </div>
-    <script type="text/javascript" src="lib/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
-    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="js/index-angular.js"></script>
 </body>
 
